@@ -25,6 +25,11 @@ Following this course : <https://www.coursera.org/learn/ruby-on-rails-web-servic
 `db[:zips].find.first` shows the first element of the `zips` collection  
 `Mongo::Logger.logger.level = ::Logger::INFO` removes the DEBUG informations from the shell  
 
+## Import Dataset
+Download json example : <http://media.mongodb.org/zips.json>  
+Run the import command :  
+`$ mongoimport --db test --collection zips --drop --file zips.json` (the file `zips.json` is in the same directory in which the shell is running)
+
 ## CRUD
 
 ### Create
