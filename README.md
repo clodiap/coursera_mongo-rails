@@ -58,14 +58,14 @@ db[:zips].insert_many([
 ### Read
 
 #### Find
-`db[:zips].find(:city => "BALTIMORE")`
-`db[:zips].find.distinct(:state)` distinct data from database
-`db[:zips].find(:city => "GERMANTOWN").count`
-`pp db[:zips].find(:city => "GERMANTOWN", :state => "NY").first`
-__print all__
-`db[:zips].find().each { |r| puts r }`
-__pretty printing__
-`require 'pp'`
+`db[:zips].find(:city => "BALTIMORE")`  
+`db[:zips].find.distinct(:state)` distinct data from database  
+`db[:zips].find(:city => "GERMANTOWN").count`  
+`pp db[:zips].find(:city => "GERMANTOWN", :state => "NY").first`  
+__print all__  
+`db[:zips].find().each { |r| puts r }`  
+__pretty printing__  
+`require 'pp'`  
 `db[:zips].find().each { |r| pp r }`
 
 #### "_id" field
@@ -74,10 +74,10 @@ __pretty printing__
 - can add a custom `id` (different from `_id`)
   
 #### Projections
-similar to SELECT in SQL
-__true or 1__ = inclusive
-__false or 0__ = exclusive
-`db[:zips].find(:state => "MD").projection(state:true).first`
+similar to SELECT in SQL  
+__true or 1__ = inclusive  
+__false or 0__ = exclusive  
+`db[:zips].find(:state => "MD").projection(state:true).first`  
 `db[:zips].find(:state => "MD").projection(state:true, _id:false).first`
 
 #### Paging
@@ -137,7 +137,7 @@ db[:zips].find( :state => 'MD' ).update_many( :$set => { :state => 'XX' } )
 db[:zips].find( :state => 'XX' ).count
 ```
 #### inc
-__$inc__ : to increment a value
+__`$inc`__ : to increment a value  
 `db[:zips].find( :city => "BALTIMORE" ).first.update_one( :$inc => { pop: 1000 } )` increments the value of pop by 1000
 
 #### Upsert
