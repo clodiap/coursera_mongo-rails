@@ -3,7 +3,7 @@
 Following this course : <https://www.coursera.org/learn/ruby-on-rails-web-services-mongodb/home/welcome>
 
 
-## CheatSheet
+## MongoDB
 
 ### start and stop MongoDB server
 `$ sudo service mongodb start`  
@@ -154,4 +154,31 @@ __delete_one__ : delete one document
 __delete_many__ : delete single or multiple documents  
 `db[:zips].find( :state => 'MD' ).count`  
 `db[:zips].find( :state => 'MD' ).delete_many()`
+
+## Integrating MongoDB and Rails
+
+### Rails setup
+
+- create new app : `rails new zips --skip-active-record`  
+- add `mongoid` gem to gemfile : `gem 'mongoid', '~> 5.0.0'`  
+- create `mongoid.yml` configuration file : `rails g mongoid:config`  
+- import `zips.json` : `mongoimport --db zips_development --collection zips --file zips.json`
+
+in rails console :
+`mongo_client=Mongoid::Clients.default`  
+`mongo_client.database.name`  
+`collection=mongo_client[:zips]`  
+`collection.count`
+
+### DAO (data access object)
+
+#### DAO class infrastructure
+
+→ model class 
+- connects to mongodb
+- access the collection
+- consistent with ORM operations (find, insert, update, delete)
+
+
+
 
